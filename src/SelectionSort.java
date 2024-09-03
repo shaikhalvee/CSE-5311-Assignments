@@ -15,7 +15,6 @@ public class SelectionSort implements Sort {
 			}
 
 			// Swap the found minimum element with the first element
-//			CommonMethods.swapValues(array[i], array[minIndex]);
 			int temp = array[minIndex];
 			array[minIndex] = array[i];
 			array[i] = temp;
