@@ -44,14 +44,6 @@ The outer loop terminates when `i = n-1`. At this point, the loop invariant tell
 
 Since the final element is the largest (or at least not smaller than any other element), the entire array from `0` to `n-1` is sorted when the loop terminates.
 
-### Summary of Proof:
-
-- **Initialization**: Before the first iteration, the subarray is trivially sorted (empty), so the loop invariant holds.
-- **Maintenance**: At each iteration, the algorithm maintains the invariant by placing the smallest element from the unsorted part into its correct position in the sorted subarray.
-- **Termination**: When the loop terminates, the entire array is sorted.
-
-This completes the proof of correctness for Selection Sort.
-
 ### Correctness Criteria:
 
 - **Loop Invariant**: At the start of each iteration of the outer loop, the subarray from `0` to `i-1` is sorted, and all elements in this subarray are smaller than or equal to the remaining elements in the array.

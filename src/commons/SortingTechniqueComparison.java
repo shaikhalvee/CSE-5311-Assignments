@@ -1,8 +1,9 @@
+package commons;
+
 import algorithm.BubbleSort;
 import algorithm.InsertionSort;
 import algorithm.SelectionSort;
 import algorithm.Sort;
-import commons.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,15 +39,15 @@ public class SortingTechniqueComparison {
 			runtimeMatrix.put(sortingAlgo, new ArrayList<>());
 		}
 		// do sorting & calculate runtime
-		for (int i = 0; i < sortingAlgorithms.length; i++) {
+//		for (int i = 0; i < sortingAlgorithms.length; i++) {
 			// input is copied for each algo so that same input is used for each algo
 			int[][] arrayCopy = inputMatrixClone(inputArrays);
 			// getting sorting type matrix before getting into it
 //			HashMap<String, ArrayList<Pair<Integer, Long>>> sortingTypeMap = runtimeMatrix.get(sortingAlgoList[i]);
 			for (int j = 0; j < sortingAlgoList.length; j++) {
-				ArrayList<Pair<Integer, Long>> runtimeMap = runtimeMatrix.get(sortingAlgoList[i]);
+				ArrayList<Pair<Integer, Long>> runtimeMap = runtimeMatrix.get(sortingAlgoList[j]);
 				for (int[] currentInputs : arrayCopy) {
-					Long totalTimeTaken = benchmarkSortInNanos(currentInputs, sortingAlgorithms[i]);
+					Long totalTimeTaken = benchmarkSortInNanos(currentInputs, sortingAlgorithms[j]);
 
 //					Long startTime = System.nanoTime();
 //					sortingAlgorithms[i].doSort(currentInputs);
@@ -56,7 +57,7 @@ public class SortingTechniqueComparison {
 					runtimeMap.add(value);
 				}
 			}
-		}
+//		}
 		return runtimeMatrix;
 	}
 
