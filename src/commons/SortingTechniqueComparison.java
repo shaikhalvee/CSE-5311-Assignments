@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SortingTechniqueComparison {
-	public static long benchmarkSort(int[] array, Sort sort) {
+	public static long benchmarkSortInNanos(int[] array, Sort sort) {
 		long startTime = System.nanoTime();
-
 		if (sort instanceof InsertionSort) {
 			sort.doSort(array);
 		} else if (sort instanceof SelectionSort) {
@@ -18,13 +17,11 @@ public class SortingTechniqueComparison {
 		} else if (sort instanceof BubbleSort) {
 			sort.doSort(array);
 		}
-
 		long endTime = System.nanoTime();
-		// convert to milliseconds
-		return (endTime - startTime) / 1000000;
+		return endTime - startTime;
 	}
 
-	public static HashMap<String, HashMap<String, ArrayList<Pair<Integer, Long>>>>
+	public static HashMap<String, ArrayList<Pair<Integer, Long>>>
 	calculateRuntimes(int[][] inputArrays,
 	                  String[] sortingAlgoList,
 	                  Sort[] sortingAlgorithms) {
@@ -45,17 +42,16 @@ public class SortingTechniqueComparison {
 			// input is copied for each algo so that same input is used for each algo
 			int[][] arrayCopy = inputMatrixClone(inputArrays);
 			// getting sorting type matrix before getting into it
-			HashMap<String, ArrayList<Pair<Integer, Long>>> sortingTypeMap = runtimeMatrix.get(sortingAlgoList[i]);
-			for (int j = 0; j < inputTypes.length; j++) {
-				ArrayList<Pair<Integer, Long>> runtimeMap = sortingTypeMap.get(inputTypes[j]);
+//			HashMap<String, ArrayList<Pair<Integer, Long>>> sortingTypeMap = runtimeMatrix.get(sortingAlgoList[i]);
+			for (int j = 0; j < sortingAlgoList.length; j++) {
+				ArrayList<Pair<Integer, Long>> runtimeMap = runtimeMatrix.get(sortingAlgoList[i]);
 				for (int[] currentInputs : arrayCopy) {
-					if (j == inputTypes.length - 1) {
-						reverse(currentInputs);
-					}
-					Long startTime = System.nanoTime();
-					sortingAlgorithms[i].doSort(currentInputs);
-					Long endTime = System.nanoTime();
-					Long totalTimeTaken = endTime - startTime;
+					Long totalTimeTaken = benchmarkSortInNanos(currentInputs, sortingAlgorithms[i]);
+
+//					Long startTime = System.nanoTime();
+//					sortingAlgorithms[i].doSort(currentInputs);
+//					Long endTime = System.nanoTime();
+//					Long totalTimeTaken = endTime - startTime;
 					Pair<Integer, Long> value = new Pair<>(currentInputs.length, totalTimeTaken);
 					runtimeMap.add(value);
 				}
