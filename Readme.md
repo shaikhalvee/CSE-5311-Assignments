@@ -53,3 +53,29 @@ Since the final element is the largest (or at least not smaller than any other e
 
 ### Time Complexity:
 While Selection Sort is correct, its time complexity is \(O(n^2)\), making it inefficient for large inputs. However, its correctness holds regardless of input size.
+
+
+## Provide information about the benchmark of each algorithm
+### Files of benchmark
+The `output_runtime.csv` and `output_runtime.xlsx` file both contains the benchmark of the algorithms. The xlsx file contains the tables as well.
+
+For better convenience, I've attached the images of the benchmark chart
+
+### Insertion Sort Chart
+The insertion sort chart is
+
+![InsertionSort.png](images/InsertionSort.png)
+
+### Selection Sort Chart
+The selection sort chart is
+
+![SelectionSort.png](images/SelectionSort.png)
+
+### Bubble Sort Chart
+The bubble sort chart is
+
+![BubbleSort.png](images/BubbleSort.png)
+
+------------------------
+
+------------------------
