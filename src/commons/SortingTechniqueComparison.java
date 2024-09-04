@@ -26,38 +26,22 @@ public class SortingTechniqueComparison {
 	calculateRuntimes(int[][] inputArrays,
 	                  String[] sortingAlgoList,
 	                  Sort[] sortingAlgorithms) {
-		// initialize strings
-//		Sort[] sortingAlgorithms = {new InsertionSort(), new HeapSort(),
-//				new MergeSort(), new ModifiedQuickSort(), new QuickSort()};
 		// initialize runtime matrix
 		HashMap<String, ArrayList<Pair<Integer, Long>>> runtimeMatrix = new HashMap<>();
 		for (String sortingAlgo : sortingAlgoList) {
-//			HashMap<String, ArrayList<Pair<Integer, Long>>> typeMatrix = new HashMap<>();
-//			for (String inputType : inputTypes) {
-//				typeMatrix.put(inputType, new ArrayList<>());
-//			}
 			runtimeMatrix.put(sortingAlgo, new ArrayList<>());
 		}
 		// do sorting & calculate runtime
-//		for (int i = 0; i < sortingAlgorithms.length; i++) {
-			// input is copied for each algo so that same input is used for each algo
-			int[][] arrayCopy = inputMatrixClone(inputArrays);
-			// getting sorting type matrix before getting into it
-//			HashMap<String, ArrayList<Pair<Integer, Long>>> sortingTypeMap = runtimeMatrix.get(sortingAlgoList[i]);
-			for (int j = 0; j < sortingAlgoList.length; j++) {
-				ArrayList<Pair<Integer, Long>> runtimeMap = runtimeMatrix.get(sortingAlgoList[j]);
-				for (int[] currentInputs : arrayCopy) {
-					Long totalTimeTaken = benchmarkSortInNanos(currentInputs, sortingAlgorithms[j]);
-
-//					Long startTime = System.nanoTime();
-//					sortingAlgorithms[i].doSort(currentInputs);
-//					Long endTime = System.nanoTime();
-//					Long totalTimeTaken = endTime - startTime;
-					Pair<Integer, Long> value = new Pair<>(currentInputs.length, totalTimeTaken);
-					runtimeMap.add(value);
-				}
+		// input is copied for each algo so that same input is used for each algo
+		int[][] arrayCopy = inputMatrixClone(inputArrays);
+		for (int j = 0; j < sortingAlgoList.length; j++) {
+			ArrayList<Pair<Integer, Long>> runtimeMap = runtimeMatrix.get(sortingAlgoList[j]);
+			for (int[] currentInputs : arrayCopy) {
+				Long totalTimeTaken = benchmarkSortInNanos(currentInputs, sortingAlgorithms[j]);
+				Pair<Integer, Long> value = new Pair<>(currentInputs.length, totalTimeTaken);
+				runtimeMap.add(value);
 			}
-//		}
+		}
 		return runtimeMatrix;
 	}
 
