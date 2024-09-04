@@ -1,13 +1,32 @@
-import java.util.Arrays;
+import algorithm.BubbleSort;
+import algorithm.InsertionSort;
+import algorithm.SelectionSort;
+import algorithm.Sort;
+import commons.Pair;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 	public static void main(String[] args) {
-		int[] ara = {3, 0, -4, 2, 7, 5, 4, 34, -3, -1, 0, 8, 9, 22, 11, 2, 7, 8};
-//		int[] newArray = new int[ara.length];
-//		System.arraycopy(ara, 0, newArray, 0, ara.length);
-//		newArray[0] = 5;
-		System.out.println(Arrays.toString(ara));
+		String[] sortingAlgoList = {"Insertion Sort", "Selection Sort", "Bubble Sort"};
+		Sort[] sortingAlgorithms = {new InsertionSort(), new SelectionSort(), new BubbleSort()};
+//		String[] inputTypes = {"Normal", "Sorted"};
+		int[] ranges = {5, 10, 100, 1000, 2000, 4000, 5000, 8000, 10000, 20000,
+				30000, 40000, 50000, 800000, 1000000, 100000000};
+		int[][] inputArrays = new int[ranges.length][];
+		for (int i = 0; i < inputArrays.length; i++) {
+			inputArrays[i] = new int[ranges[i]];
+			inputArrays[i] = IntStream.generate(
+					() -> new Random().nextInt()
+			).limit(ranges[i]).toArray();
+		}
+		HashMap<String, HashMap<String, ArrayList<Pair<Integer, Long>>>> timeTaken = SortingTechniqueComparison
+				.calculateRuntimes(inputArrays, sortingAlgoList, sortingAlgorithms);
+//		writeOutputInFile(timeTaken, sortingAlgoList, inputTypes);
 	}
 }
