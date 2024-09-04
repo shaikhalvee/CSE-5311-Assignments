@@ -1,3 +1,5 @@
+package algorithm;
+
 public class SelectionSort implements Sort {
 
 	@Override

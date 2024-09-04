@@ -1,4 +1,6 @@
-public class BubbleSort implements Sort{
+package algorithm;
+
+public class BubbleSort implements Sort {
 	@Override
 	public void doSort(int[] array) {
 		int length = array.length;

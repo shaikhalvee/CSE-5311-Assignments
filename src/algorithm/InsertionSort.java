@@ -1,3 +1,5 @@
+package algorithm;
+
 public class InsertionSort implements Sort {
 	public void doSort(int[] sortedArray) {
 		for (int i = 1; i < sortedArray.length; i++) {
