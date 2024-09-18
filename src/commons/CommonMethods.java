@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class CommonMethods {
-	public static void swapValues(Integer a, Integer b) {
-		Integer temp = a;
+	public static <T> void swapValues(Class<T> a, Class<T> b) {
+		Class<T> temp = a;
 		a = b;
 		b = temp;
 	}
