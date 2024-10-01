@@ -38,25 +38,25 @@
 
     For the non-random pivot version, the average case time complexity is derived as follows:
 
-   1. **Dividing the array**: The pivot ideally splits the array into two equal halves on average, requiring \( O(n) \) comparisons to partition.
+   1. **Dividing the array**: The pivot ideally splits the array into two equal halves on average, requiring   $O(n)$ comparisons to partition.
 
    2. **Recursive Splitting**: The recurrence relation for Quicksort's average case is given by:
-      \[
+      $$
       T(n) = 2T\left(\frac{n}{2}\right) + O(n)
-      \]
+      $$
       This can be expanded as:
-      \[
+      $$
       T(n) = 2 \left(2T\left(\frac{n}{4}\right) + O\left(\frac{n}{2}\right)\right) + O(n)
-      \]
-      \[
+      $$
+      $$
       = 4T\left(\frac{n}{4}\right) + O(n) + O(n)
-      \]
-      \[
+      $$
+      $$
       = 8T\left(\frac{n}{8}\right) + O(n) + O(n) + O(n)
-      \]
-      Summing these results yields \( O(n \log n) \).
+      $$
+      Summing these results yields $O(n \log n)$.
 
-Hence, the **average runtime complexity** for the non-random pivot version is \( O(n \log n) \).
+Hence, the **average runtime complexity** for the non-random pivot version is $ O(n \log n) $.
 
 
 
