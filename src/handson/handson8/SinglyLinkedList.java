@@ -1,7 +1,7 @@
 package handson.handson8;
 
 public class SinglyLinkedList {
-	private class Node {
+	private static class Node {
 		int data;
 		Node next;
 
