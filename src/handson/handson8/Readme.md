@@ -270,7 +270,7 @@ class SinglyLinkedList {
         head = null;
     }
 
-    // Add a new node at the end
+    // Add a new AVLNode at the end
     public void add(int value) {
         Node newNode = new Node(value);
         if (head == null) {
@@ -284,7 +284,7 @@ class SinglyLinkedList {
         }
     }
 
-    // Remove a node with a specific value
+    // Remove a AVLNode with a specific value
     public void remove(int value) {
         if (head == null) {
             System.out.println("List is empty");
@@ -373,7 +373,7 @@ public class DataStructureDemo {
     - The `enqueue` method adds an element to the rear of the queue, and `dequeue` removes the front element. Both operations are \(O(1)\).
 
 3. **Singly Linked List**:
-    - Implemented using a `Node` class to store data and a pointer to the next node. The list supports `add()` and `remove()` operations.
+    - Implemented using a `Node` class to store data and a pointer to the next AVLNode. The list supports `add()` and `remove()` operations.
     - The `add` method appends an element to the end of the list, and `remove` deletes the first occurrence of the element. Traversal is \(O(n)\) for both operations in the worst case.
 
 ### Output Example:

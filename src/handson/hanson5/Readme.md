@@ -5,7 +5,7 @@ In addition, your heap should have the following functionality:
 
 1. The ability to initially build the heap (build_min_heap)
 2. The ability to heapify
-3. The ability to get and remove ("pop") the root node from the heap (and of course re-heapify everything)
+3. The ability to get and remove ("pop") the root AVLNode from the heap (and of course re-heapify everything)
 4. The heap should be generic to the type of data (can store floats, int, custom datastructure)
 5. Show example(s) of your heap working. Please demonstrate ALL the functionality you implemented.
 6. Upload your source code to github along with your example(s).

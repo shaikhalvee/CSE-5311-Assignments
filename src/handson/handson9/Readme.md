@@ -49,7 +49,7 @@ public class Bucket {
 		this.tail = null;
 	}
 
-	// Add a node at the end of the doubly linked list (chaining)
+	// Add a AVLNode at the end of the doubly linked list (chaining)
 	public void addNode(int key, int value) {
 		Node newNode = new Node(key, value);
 		if (head == null) {
@@ -61,7 +61,7 @@ public class Bucket {
 		tail = newNode;
 	}
 
-	// Find node with the given key
+	// Find AVLNode with the given key
 	public Node find(int key) {
 		Node current = head;
 		while (current != null) {
@@ -73,21 +73,21 @@ public class Bucket {
 		return null;
 	}
 
-	// Remove a node with the given key
+	// Remove a AVLNode with the given key
 	public void remove(int key) {
-		Node node = find(key);
-		if (node != null) {
-			if (node == head) {
+		Node AVLNode = find(key);
+		if (AVLNode != null) {
+			if (AVLNode == head) {
 				head = head.next;
 			}
-			if (node == tail) {
+			if (AVLNode == tail) {
 				tail = tail.prev;
 			}
-			if (node.prev != null) {
-				node.prev.next = node.next;
+			if (AVLNode.prev != null) {
+				AVLNode.prev.next = AVLNode.next;
 			}
-			if (node.next != null) {
-				node.next.prev = node.prev;
+			if (AVLNode.next != null) {
+				AVLNode.next.prev = AVLNode.prev;
 			}
 		}
 	}
@@ -123,9 +123,9 @@ public class HashTable {
 	// Insert a key-value pair into the hash table
 	public void insert(int key, int value) {
 		int index = hashFunction(key);
-		Node node = table[index].find(key);
+		Node AVLNode = table[index].find(key);
 
-		if (node == null) {
+		if (AVLNode == null) {
 			table[index].addNode(key, value);
 			size++;
 
@@ -135,16 +135,16 @@ public class HashTable {
 			}
 		} else {
 			// Update value if key already exists
-			node.value = value;
+			AVLNode.value = value;
 		}
 	}
 
 	// Get a value by key
 	public Integer get(int key) {
 		int index = hashFunction(key);
-		Node node = table[index].find(key);
-		if (node != null) {
-			return node.value;
+		Node AVLNode = table[index].find(key);
+		if (AVLNode != null) {
+			return AVLNode.value;
 		}
 		return null;
 	}
@@ -195,7 +195,7 @@ public class HashTable {
 
 ### Key Components:
 
-1. **Node Class**: Represents a node in a doubly linked list, which stores a key-value pair.
+1. **Node Class**: Represents a AVLNode in a doubly linked list, which stores a key-value pair.
 
 2. **Bucket Class**: Represents a bucket in the hash table. Each bucket is a doubly linked list where collisions are handled by chaining.
 
