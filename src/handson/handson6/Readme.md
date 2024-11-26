@@ -2,7 +2,7 @@
 
 1. Implement both versions of quicksort (random and non-random choice for the pivot).
 
-2.  For the non-random pivot version of quicksort show the following benchmarks on the same graph:
+2.  For the non-random pivot version of quicksort show the following benchmarks on the same dijkstraGraph:
 
     a) best case (generate a set of inputs that will always be the best case, repeat for multiple array input sizes "n"). 
    

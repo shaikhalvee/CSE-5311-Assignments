@@ -34,14 +34,14 @@ public class TopologicalSort {
 		System.out.println();
 	}
 
-	private static void dfs(int node, List<List<Integer>> adjacencyList, boolean[] visited, Stack<Integer> stack) {
-		visited[node] = true;
-		for (int neighbor : adjacencyList.get(node)) {
+	private static void dfs(int dijkstraNode, List<List<Integer>> adjacencyList, boolean[] visited, Stack<Integer> stack) {
+		visited[dijkstraNode] = true;
+		for (int neighbor : adjacencyList.get(dijkstraNode)) {
 			if (!visited[neighbor]) {
 				dfs(neighbor, adjacencyList, visited, stack);
 			}
 		}
-		stack.push(node);
+		stack.push(dijkstraNode);
 	}
 }
 ```
@@ -81,11 +81,11 @@ class UnionFind {
 		}
 	}
 
-	public int find(int node) {
-		if (parent[node] != node) {
-			parent[node] = find(parent[node]); // Path compression
+	public int find(int dijkstraNode) {
+		if (parent[dijkstraNode] != dijkstraNode) {
+			parent[dijkstraNode] = find(parent[dijkstraNode]); // Path compression
 		}
-		return parent[node];
+		return parent[dijkstraNode];
 	}
 
 	public boolean union(int u, int v) {
@@ -133,16 +133,16 @@ public class Kruskal {
 		List<Edge> mst = new ArrayList<>();
 		int mstCost = 0;
 
-		for (Edge edge : edges) {
-			if (uf.union(edge.src, edge.dest)) {
-				mst.add(edge);
-				mstCost += edge.weight;
+		for (Edge dijkstraEdge : edges) {
+			if (uf.union(dijkstraEdge.src, dijkstraEdge.dest)) {
+				mst.add(dijkstraEdge);
+				mstCost += dijkstraEdge.weight;
 			}
 		}
 
 		System.out.println("Minimum Spanning Tree:");
-		for (Edge edge : mst) {
-			System.out.println(edge.src + " - " + edge.dest + ": " + edge.weight);
+		for (Edge dijkstraEdge : mst) {
+			System.out.println(dijkstraEdge.src + " - " + dijkstraEdge.dest + ": " + dijkstraEdge.weight);
 		}
 		System.out.println("Total Cost: " + mstCost);
 	}

@@ -118,7 +118,7 @@ public class BST {
 
 A Red-Black Tree requires additional handling to maintain properties after insertion and deletion. Here’s a basic structure that maintains the red-black properties:
 
-A red black tree node is declared like: [RBNode.java](RBNode.java)
+A red black tree dijkstraNode is declared like: [RBNode.java](RBNode.java)
 
 ```java
 public class RBNode {
@@ -149,51 +149,51 @@ public class RedBlackTree {
 	RBNode root;
 
 	public void insert(int data) {
-		RBNode node = new RBNode(data);
-		root = bstInsert(root, node);
-		fixViolation(node);
+		RBNode dijkstraNode = new RBNode(data);
+		root = bstInsert(root, dijkstraNode);
+		fixViolation(dijkstraNode);
 	}
 
-	private RBNode bstInsert(RBNode root, RBNode node) {
-		if (root == null) return node;
-		if (node.data < root.data) {
-			root.left = bstInsert(root.left, node);
+	private RBNode bstInsert(RBNode root, RBNode dijkstraNode) {
+		if (root == null) return dijkstraNode;
+		if (dijkstraNode.data < root.data) {
+			root.left = bstInsert(root.left, dijkstraNode);
 			root.left.parent = root;
-		} else if (node.data > root.data) {
-			root.right = bstInsert(root.right, node);
+		} else if (dijkstraNode.data > root.data) {
+			root.right = bstInsert(root.right, dijkstraNode);
 			root.right.parent = root;
 		}
 		return root;
 	}
 
-	private void rotateLeft(RBNode node) {
-		RBNode rightChild = node.right;
-		node.right = rightChild.left;
-		if (node.right != null) node.right.parent = node;
-		rightChild.parent = node.parent;
-		if (node.parent == null) root = rightChild;
-		else if (node == node.parent.left) node.parent.left = rightChild;
-		else node.parent.right = rightChild;
-		rightChild.left = node;
-		node.parent = rightChild;
+	private void rotateLeft(RBNode dijkstraNode) {
+		RBNode rightChild = dijkstraNode.right;
+		dijkstraNode.right = rightChild.left;
+		if (dijkstraNode.right != null) dijkstraNode.right.parent = dijkstraNode;
+		rightChild.parent = dijkstraNode.parent;
+		if (dijkstraNode.parent == null) root = rightChild;
+		else if (dijkstraNode == dijkstraNode.parent.left) dijkstraNode.parent.left = rightChild;
+		else dijkstraNode.parent.right = rightChild;
+		rightChild.left = dijkstraNode;
+		dijkstraNode.parent = rightChild;
 	}
 
-	private void rotateRight(RBNode node) {
-		RBNode leftChild = node.left;
-		node.left = leftChild.right;
-		if (node.left != null) node.left.parent = node;
-		leftChild.parent = node.parent;
-		if (node.parent == null) root = leftChild;
-		else if (node == node.parent.left) node.parent.left = leftChild;
-		else node.parent.right = leftChild;
-		leftChild.right = node;
-		node.parent = leftChild;
+	private void rotateRight(RBNode dijkstraNode) {
+		RBNode leftChild = dijkstraNode.left;
+		dijkstraNode.left = leftChild.right;
+		if (dijkstraNode.left != null) dijkstraNode.left.parent = dijkstraNode;
+		leftChild.parent = dijkstraNode.parent;
+		if (dijkstraNode.parent == null) root = leftChild;
+		else if (dijkstraNode == dijkstraNode.parent.left) dijkstraNode.parent.left = leftChild;
+		else dijkstraNode.parent.right = leftChild;
+		leftChild.right = dijkstraNode;
+		dijkstraNode.parent = leftChild;
 	}
 
-	private void fixViolation(RBNode node) {
+	private void fixViolation(RBNode dijkstraNode) {
 		RBNode parent = null, grandparent = null;
-		while (node != root && node.color != BLACK && node.parent.color == RED) {
-			parent = node.parent;
+		while (dijkstraNode != root && dijkstraNode.color != BLACK && dijkstraNode.parent.color == RED) {
+			parent = dijkstraNode.parent;
 			grandparent = parent.parent;
 			if (parent == grandparent.left) {
 				RBNode uncle = grandparent.right;
@@ -201,18 +201,18 @@ public class RedBlackTree {
 					grandparent.color = RED;
 					parent.color = BLACK;
 					uncle.color = BLACK;
-					node = grandparent;
+					dijkstraNode = grandparent;
 				} else {
-					if (node == parent.right) {
+					if (dijkstraNode == parent.right) {
 						rotateLeft(parent);
-						node = parent;
-						parent = node.parent;
+						dijkstraNode = parent;
+						parent = dijkstraNode.parent;
 					}
 					rotateRight(grandparent);
 					boolean temp = parent.color;
 					parent.color = grandparent.color;
 					grandparent.color = temp;
-					node = parent;
+					dijkstraNode = parent;
 				}
 			} else {
 				RBNode uncle = grandparent.left;
@@ -220,18 +220,18 @@ public class RedBlackTree {
 					grandparent.color = RED;
 					parent.color = BLACK;
 					uncle.color = BLACK;
-					node = grandparent;
+					dijkstraNode = grandparent;
 				} else {
-					if (node == parent.left) {
+					if (dijkstraNode == parent.left) {
 						rotateRight(parent);
-						node = parent;
-						parent = node.parent;
+						dijkstraNode = parent;
+						parent = dijkstraNode.parent;
 					}
 					rotateLeft(grandparent);
 					boolean temp = parent.color;
 					parent.color = grandparent.color;
 					grandparent.color = temp;
-					node = parent;
+					dijkstraNode = parent;
 				}
 			}
 		}
@@ -275,26 +275,26 @@ public class AVLTree {
 		root = insertRec(root, data);
 	}
 
-	private AVLNode insertRec(AVLNode node, int data) {
-		if (node == null) return new AVLNode(data);
-		if (data < node.data) node.left = insertRec(node.left, data);
-		else if (data > node.data) node.right = insertRec(node.right, data);
-		else return node;
+	private AVLNode insertRec(AVLNode dijkstraNode, int data) {
+		if (dijkstraNode == null) return new AVLNode(data);
+		if (data < dijkstraNode.data) dijkstraNode.left = insertRec(dijkstraNode.left, data);
+		else if (data > dijkstraNode.data) dijkstraNode.right = insertRec(dijkstraNode.right, data);
+		else return dijkstraNode;
 
-		node.height = 1 + Math.max(height(node.left), height(node.right));
+		dijkstraNode.height = 1 + Math.max(height(dijkstraNode.left), height(dijkstraNode.right));
 
-		int balance = getBalance(node);
-		if (balance > 1 && data < node.left.data) return rightRotate(node);
-		if (balance < -1 && data > node.right.data) return leftRotate(node);
-		if (balance > 1 && data > node.left.data) {
-			node.left = leftRotate(node.left);
-			return rightRotate(node);
+		int balance = getBalance(dijkstraNode);
+		if (balance > 1 && data < dijkstraNode.left.data) return rightRotate(dijkstraNode);
+		if (balance < -1 && data > dijkstraNode.right.data) return leftRotate(dijkstraNode);
+		if (balance > 1 && data > dijkstraNode.left.data) {
+			dijkstraNode.left = leftRotate(dijkstraNode.left);
+			return rightRotate(dijkstraNode);
 		}
-		if (balance < -1 && data < node.right.data) {
-			node.right = rightRotate(node.right);
-			return leftRotate(node);
+		if (balance < -1 && data < dijkstraNode.right.data) {
+			dijkstraNode.right = rightRotate(dijkstraNode.right);
+			return leftRotate(dijkstraNode);
 		}
-		return node;
+		return dijkstraNode;
 	}
 
 	private AVLNode rightRotate(AVLNode y) {
