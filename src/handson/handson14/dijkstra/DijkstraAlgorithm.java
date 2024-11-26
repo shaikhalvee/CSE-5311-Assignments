@@ -6,20 +6,20 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
-	public static void calculateShortestPath(Graph graph, String startName) {
-		Node startNode = graph.getNode(startName);
+	public static void calculateShortestPath(DijkstraGraph dijkstraGraph, String startName) {
+		DijkstraNode startNode = dijkstraGraph.getNode(startName);
 		if (startNode == null) return;
 
-		PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+		PriorityQueue<DijkstraNode> priorityQueue = new PriorityQueue<>();
 		startNode.distance = 0;
 		priorityQueue.add(startNode);
 
 		while (!priorityQueue.isEmpty()) {
-			Node currentNode = priorityQueue.poll();
+			DijkstraNode currentNode = priorityQueue.poll();
 
-			for (Edge edge : currentNode.edges) {
-				Node neighbor = edge.target;
-				double newDist = currentNode.distance + edge.weight;
+			for (DijkstraEdge dijkstraEdge : currentNode.dijkstraEdges) {
+				DijkstraNode neighbor = dijkstraEdge.target;
+				double newDist = currentNode.distance + dijkstraEdge.weight;
 
 				if (newDist < neighbor.distance) {
 					neighbor.distance = newDist;
@@ -30,10 +30,10 @@ public class DijkstraAlgorithm {
 		}
 	}
 
-	public static List<String> getShortestPathTo(Node target) {
+	public static List<String> getShortestPathTo(DijkstraNode target) {
 		List<String> path = new ArrayList<>();
-		for (Node node = target; node != null; node = node.previous) {
-			path.add(node.name);
+		for (DijkstraNode dijkstraNode = target; dijkstraNode != null; dijkstraNode = dijkstraNode.previous) {
+			path.add(dijkstraNode.name);
 		}
 		Collections.reverse(path);
 		return path;
