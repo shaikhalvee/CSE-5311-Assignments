@@ -18,6 +18,7 @@ public class Simulation {
 	}
 
 	private static void dijkstraSimulation() {
+		System.out.println("Dijkstra Algorithm Simulation");
 		// Create the graph
 		DijkstraGraph dijkstraGraph = new DijkstraGraph();
 		dijkstraGraph.addNode("s");
@@ -48,6 +49,7 @@ public class Simulation {
 	}
 
 	private static void bellmanFordSimulation() {
+		System.out.println("Bellman Ford Algorithm Simulation");
 		// Create the graph
 		BellmanGraph graph = new BellmanGraph();
 		graph.addNode("s");
@@ -80,6 +82,7 @@ public class Simulation {
 	}
 
 	private static void floydWarshallSimulation() {
+		System.out.println("Floyd Warshall Algorithm Simulation");
 		// Number of nodes in the graph
 		int numberOfNodes = 5;
 
